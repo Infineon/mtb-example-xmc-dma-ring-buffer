@@ -6,7 +6,7 @@ For simplicity, the OS task is emulated inside this example with a SysTick Timer
 
 ## Requirements
 
-- [ModusToolbox® software](https://www.cypress.com/products/modustoolbox-software-environment) v2.3
+- [ModusToolbox&trade; software](https://www.cypress.com/products/modustoolbox-software-environment) v2.3
 - [SEGGER J-Link software](https://www.segger.com/downloads/jlink/#J-LinkSoftwareAndDocumentationPack)
 - Programming Language: C
 - Associated Parts: All [XMC™ MCU](https://www.infineon.com/cms/en/product/microcontroller/32-bit-industrial-microcontroller-based-on-arm-cortex-m/) parts
@@ -95,7 +95,7 @@ Various CLI tools include a `-h` option that prints help information to the term
 
 1. Connect the board to your PC using a micro-USB cable through the debug USB connector.
 
-2. Open a terminal program and select the JLINK CDC UART COM port. Configure the terminal with baud rate of 115200, data bits of 8, stop bits of 1, and with parity and flow control set to none.
+2. Open a terminal program and select the *JLINK CDC UART COM port*. Configure the terminal with baud rate of 115200, data bits of 8, stop bits of 1, and with parity and flow control set to none.
 
 3. Program the board using Eclipse IDE for ModusToolbox:
 
@@ -111,11 +111,20 @@ Various CLI tools include a `-h` option that prints help information to the term
 
 5. Type inside the terminal.
 
-6. Confirm that the text you type is echoed on the terminal.
+6. Confirm that the text you type is echoed on the terminal.  
+
 
 ## Debugging
 
 You can debug the example to step through the code. In the IDE, use the **\<Application Name> Debug (JLink)** configuration in the **Quick Panel**. For more details, see the "Program and Debug" section in the [Eclipse IDE for ModusToolbox User Guide](https://www.cypress.com/MTBEclipseIDEUserGuide).
+
+## Design and Implementation
+
+The code consists of two parts as follows:
+
+* **Part 1:** Defines and configures the DMA channel. The source address configured in DMA is the 'RBUF' register (XMC_UART0_CH0->RBUF), where the data should be read from. The destination address is the address of the first element in the ring buffer array `ring_buffer[0]`. The data, which is received via the UART and saved in the ring buffer is echoed to the UART. This task takes over `SysTick_Handler()` interrupt function, which calls  the `uart_transmit()` function to transmit the data from the ring buffer when new data is written by the DMA to the ring buffer.
+
+* **Part 2**: Initializes and enables the DMA module in the main function using the configuration from Step 1. It also configures the system time using the `SysTick_Config()` function, which calls the `SysTick_Handler()` function every 1 ms.
 
 ## Related Resources
 
@@ -148,13 +157,14 @@ Document Title: *CE232572* - *XMC MCU: DMA Ring Buffer*
 | Version | Description of Change |
 | ------- | --------------------- |
 | 1.0.0   | New code example      |
+| 1.0.1   | Updated README        |
 ------
 
 All other trademarks or registered trademarks referenced herein are the property of their respective owners.
 
 ![banner](images/ifx_logo_rgb.jpg)
 
-© 2021 Infineon Technologies AG
+© 2020-2021 Infineon Technologies AG
 
 All Rights Reserved.
 
