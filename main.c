@@ -48,6 +48,7 @@
 /*******************************************************************************
 * Defines
 *******************************************************************************/
+
 /* Declarations for system timer emulating an OS task */
 #define TICKS_PER_SECOND    1000
 #define TICKS_WAIT          500
@@ -61,10 +62,10 @@
 /*******************************************************************************
 * Global Variables
 *******************************************************************************/
+
 /* Declaration of ring buffer */
 static volatile uint8_t ring_buffer[RING_BUFFER_SIZE];
 
-/* Configuration of DMA */
 static const XMC_DMA_CH_CONFIG_t dma_ch_config =
 {
     {
@@ -204,6 +205,10 @@ int main(void)
 
     /* Initialize and enable DMA module */
     XMC_DMA_Init(XMC_DMA0);
+    if (XMC_DMA_CH_Init(XMC_DMA0, GPDMA_CHANNEL_2, &dma_ch_config) != XMC_DMA_CH_STATUS_OK)
+    {
+        CY_ASSERT(0);
+    }
     XMC_DMA_CH_Init(XMC_DMA0, GPDMA_CHANNEL_2, &dma_ch_config);
     XMC_DMA_CH_Enable(XMC_DMA0, GPDMA_CHANNEL_2);
 
