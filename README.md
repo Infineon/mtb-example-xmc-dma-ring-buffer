@@ -1,6 +1,6 @@
 # XMC&trade; MCU: DMA ring buffer
 
-This code example demonstrates how to receive data using DMA via a Universal Serial Interface Channel (USIC) and synchronize the processing with an OS task through a ring buffer.
+This code example demonstrates how to receive data using DMA via a universal serial interface channel (USIC) and synchronize the processing with an OS task through a ring buffer.
 
 For simplicity, the OS task is emulated inside this example with a SysTick timer interrupt.
 
@@ -21,11 +21,18 @@ For simplicity, the OS task is emulated inside this example with a SysTick timer
 
 ## Supported kits (make variable 'TARGET')
 
+- [XMC4200 Platform2Go kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_xmc_plt2go_xmc4200/) (`KIT_XMC_PLT2GO_XMC4200`)
+- [XMC4300 relax EtherCAT kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_xmc43_relax_ecat_v1/) (`KIT_XMC43_RELAX_ECAT_V1`)
+- [XMC4400 Platform2Go kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_xmc_plt2go_xmc4400/) (`KIT_XMC_PLT2GO_XMC4400`)
+- [XMC4500 relax kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_xmc45_relax_v1/) (`KIT_XMC45_RELAX_V1`) - Default value of `TARGET`
 - [XMC4700 relax kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_xmc47_relax_v1/) (`KIT_XMC47_RELAX_V1`)
+- [XMC4800 relax EtherCAT kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_xmc48_relax_ecat_v1/) (`KIT_XMC48_RELAX_ECAT_V1`)
 
 ## Hardware setup
 
 This example uses the board's default configuration. See the kit user guide to ensure that the board is configured correctly.
+
+Additionally, an USB-to-UART serial adapter is required to test the code example on the [XMC4500 relax kit](https://www.infineon.com/cms/en/product/evaluation-boards/kit_xmc45_relax_v1/).
 
 
 ## Software setup
@@ -157,7 +164,7 @@ Resources | Links
 Code examples | [Using ModusToolbox&trade; software](https://github.com/Infineon/Code-Examples-for-ModusToolbox-Software) on GitHub
 Device documentation | [XMC4000 family datasheets](https://www.infineon.com/cms/en/product/microcontroller/32-bit-industrial-microcontroller-based-on-arm-cortex-m/32-bit-xmc4000-industrial-microcontroller-arm-cortex-m4/#document-group-myInfineon-49) <br> [XMC4000 family technical reference manuals](https://www.infineon.com/cms/en/product/microcontroller/32-bit-industrial-microcontroller-based-on-arm-cortex-m/32-bit-xmc4000-industrial-microcontroller-arm-cortex-m4/#document-group-myInfineon-44
 Development kits |[XMC&trade; eval boards](https://www.infineon.com/cms/en/product/microcontroller/32-bit-industrial-microcontroller-based-on-arm-cortex-m/#boards)
-Libraries on GitHub | [mtb-pdl-cat3](https://github.com/Infineon/mtb-pdl-cat3) – XMC&trade; MCU peripheral library (XMCLib) and docs
+Libraries on GitHub | [mtb-xmclib-cat3](https://github.com/Infineon/mtb-xmclib-cat3) – XMC&trade; MCU peripheral library (XMCLib) and docs
 Tools | [Eclipse IDE for ModusToolbox&trade; software](https://www.infineon.com/modustoolbox) – ModusToolbox&trade; software is a collection of easy-to-use software and tools enabling rapid development with Infineon MCUs, covering applications from embedded sense and control to wireless and cloud-connected systems using AIROC&trade; Wi-Fi and Bluetooth&reg; connectivity devices.
 
 ## Other resources
@@ -170,12 +177,13 @@ For XMC&trade; MCU devices, see [32-bit XMC™ industrial microcontroller based 
 
 Document title: *CE232572* – *XMC&trade; MCU: DMA ring buffer*
 
- Version | Description of change
- ------- | ---------------------
- 1.0.0   | New code example
- 1.0.1   | Updated README
- 1.1.0   | Added support for more kits
- 2.0.0   | Updated to support ModusToolbox&trade; software v3.0; CE will not be backward compatible with previous versions of ModusToolbox&trade; software
+| Version | Description of change       |
+| ------- | --------------------------- |
+| 1.0.0   | New code example            |
+| 1.0.1   | Updated README              |
+| 1.1.0   | Added support for more kits |
+| 2.0.0   | Updated to support ModusToolbox&trade; software v3.0. This CE is not backward compatible with previous versions of ModusToolbox™ software. |
+| 2.1.0   | Added support for DMA personality |
 ------
 
 All other trademarks or registered trademarks referenced herein are the property of their respective owners.
